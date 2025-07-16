@@ -1,19 +1,25 @@
 //your JS code here. If required.
 
   function secondHighest(arr) {
-    // Handle edge cases
-    if (arr.length < 2) return -Infinity;
+   if(arr.length<2){
+	    return "Array must have at least two elements.";
+   }
+	  let largest = -Infinity;
+  let secondLargest = -Infinity; 
+	    for (let num of arr) {
+    if (num > largest) {
+      secondLargest = largest;
+      largest = num;
+    } else if (num > secondLargest && num < largest) {
+      secondLargest = num;
+    }
+  }
 
-    // Use a Set to remove duplicates
-    const unique = [...new Set(arr)];
+  if (secondLargest === -Infinity) {
+    return "No second largest element (all elements may be equal).";
+  }
 
-    if (unique.length < 2) return -Infinity;
-
-    // Sort in descending order
-    unique.sort((a, b) => b - a);
-
-    // Return second highest
-    return unique[1];
+  return secondLargest;
   }
 
   // ✅ Example test cases (for quick testing in browser console)

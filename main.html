@@ -10,6 +10,23 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
+			 if (arr.length < 2) return -Infinity;
+
+  let largest = -Infinity;
+  let secondLargest = -Infinity;
+
+  for (let num of arr) {
+    if (num > largest) {
+      secondLargest = largest;
+      largest = num;
+    } else if (num > secondLargest && num < largest) {
+      secondLargest = num;
+    }
+  }
+
+  return secondLargest === -Infinity ? -Infinity : secondLargest;
+}
+
 			
 		}
 
